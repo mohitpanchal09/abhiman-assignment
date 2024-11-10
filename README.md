@@ -125,11 +125,6 @@ You can use tools like [Kafka UI](https://github.com/provectus/kafka-ui) or the 
 
 After starting the services, you can use the following command to run the application in development mode:
 
-```bash
-npm run dev
-```
-
-For production:
 
 ```bash
 npm start
