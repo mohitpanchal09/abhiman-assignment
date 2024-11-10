@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database Service
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data  
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB="abhiman"
+      - POSTGRES_USER="abhiman"
+      - POSTGRES_PASSWORD="abhiman"
+
+  # Adminer for database management
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+      
+  # Zookeeper Service (needed for Kafka)
+  zookeeper:
+    image: zookeeper:latest
+    ports:
+      - "2181:2181"  # Default port for Zookeeper
+
+  # Kafka Service
+  kafka:
+    image: confluentinc/cp-kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: "192.168.1.83:2181"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://192.168.1.83:9092"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
+
+
+

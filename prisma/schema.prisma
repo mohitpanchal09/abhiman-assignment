@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  username String   @unique
+  polls   Poll[]   // One-to-many relationship with Poll
+  votes   Vote[]   // One-to-many relation with Vote
+}
+
+model Poll {
+  id          Int      @id @default(autoincrement())
+  title       String
+  userId      Int      // Foreign key to User model (who created the poll)
+  user        User     @relation(fields: [userId], references: [id]) // Relation to User
+  options     Option[] // One-to-many relation with Option
+  votes       Vote[]   // One-to-many relation with Vote
+}
+
+
+model Option {
+  id          Int      @id @default(autoincrement()) // Auto-generated primary key
+  pollId      Int      // Foreign key to Poll
+  option_text String   // Option text
+  poll        Poll     @relation(fields: [pollId], references: [id]) // Relation to Poll
+  votes       Vote[]   // One-to-many relation with Vote
+}
+
+model Vote {
+  id          Int      @id @default(autoincrement())  // Auto-generated primary key
+  userId      Int      // Foreign key to User
+  pollId      Int      // Foreign key to Poll
+  optionId    Int      // Foreign key to Option
+  user        User     @relation(fields: [userId], references: [id]) // Relation to User
+  poll        Poll     @relation(fields: [pollId], references: [id]) // Relation to Poll
+  option      Option   @relation(fields: [optionId], references: [id]) // Relation to Option
+}
