@@ -27,8 +27,8 @@ Make sure you have the following installed on your machine:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone git@github.com:mohitpanchal09/abhiman-assignment.git
+cd abhiman-assignment
 ```
 
 ### 2. Install Dependencies
