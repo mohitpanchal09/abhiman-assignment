@@ -1,5 +1,8 @@
+Here's your updated README with the new endpoints and information about `Socket.io` events for real-time updates.
 
-# Polling backend system
+---
+
+# Polling Backend System
 
 This project is a Node.js application that uses Prisma, PostgreSQL, Kafka, and Zookeeper for managing data and event streaming. The application is containerized using Docker for easy setup and deployment.
 
@@ -11,6 +14,8 @@ This project is a Node.js application that uses Prisma, PostgreSQL, Kafka, and Z
 - [Running the Application](#running-the-application)
 - [Accessing Adminer](#accessing-adminer)
 - [Accessing Kafka](#accessing-kafka)
+- [API Endpoints](#api-endpoints)
+- [Socket.io Events](#socketio-events)
 - [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
@@ -138,4 +143,68 @@ You can access Prisma Studio, a database GUI for Prisma, using the following com
 npx prisma studio
 ```
 
+## API Endpoints
 
+You can test the following API endpoints using Postman:
+
+1. **Create User**
+   - **Endpoint**: `POST /api/create-user`
+   - **Request Body**:
+     ```json
+     {
+       "username": "rahul"
+     }
+     ```
+   - **Description**: Create a new user.
+
+2. **Create Poll**
+   - **Endpoint**: `POST /api/polls`
+   - **Request Body**:
+     ```json
+     {
+       "title": "What is capital of India?",
+       "options": ["delhi", "kolkata", "mumbai", "goa"],
+       "userId": 2
+     }
+     ```
+   - **Description**: Create a new poll with a title, options, and a user ID.
+
+3. **Get Poll**
+   - **Endpoint**: `GET /api/polls/:id`
+   - **Description**: Retrieve details of a poll by ID.
+
+4. **Vote**
+   - **Endpoint**: `POST /api/polls/:pollId/vote`
+   - **Request Body**:
+     ```json
+     {
+       "userId": 2,
+       "optionId": 6
+     }
+     ```
+   - **Description**: Submit a vote for a poll option.
+
+5. **Leaderboard**
+   - **Endpoint**: `GET /api/leaderboard`
+   - **Description**: Retrieve the leaderboard showing the vote count for each option in a poll.
+
+   You can test the above endpoints using Postman and see how the data is managed in real time.
+
+## Socket.io Events
+
+This backend uses **Socket.io** for real-time updates. The following events are emitted when specific actions occur:
+
+1. **poll-created**
+   - Emitted when a new poll is created. This event will broadcast the newly created poll to connected clients.
+
+2. **leaderboard-update**
+   - Emitted when the leaderboard for a poll is updated. This helps clients see the latest results in real time.
+
+3. **new-vote**
+   - Emitted when a new vote is cast for a poll option. This event will notify connected clients of the updated vote count.
+
+These events allow for real-time data updates, providing an interactive experience for the users. You can listen to these events in your frontend application using **Socket.io** to get live updates.
+
+---
+
+Let me know if you need any further adjustments!
