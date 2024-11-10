@@ -1,8 +1,5 @@
-Great to hear it worked! Below is a template for your `README.md` file, which provides instructions on setting up your Node.js project with Docker, Prisma, PostgreSQL, and Kafka. You can customize it further as needed.
 
----
-
-# Project Name
+# Polling backend system
 
 This project is a Node.js application that uses Prisma, PostgreSQL, Kafka, and Zookeeper for managing data and event streaming. The application is containerized using Docker for easy setup and deployment.
 
@@ -48,7 +45,7 @@ Create a `.env` file in the root of the project directory, and add the following
 
 ```bash
 DATABASE_URL="postgresql://testingsetup:testingsetup@localhost:5432/testingsetup"
-KAFKA_BROKER="localhost:9092"
+PORT=3000
 ```
 
 ### 4. Docker Setup
@@ -141,28 +138,4 @@ You can access Prisma Studio, a database GUI for Prisma, using the following com
 npx prisma studio
 ```
 
-Prisma Studio will be available at [http://localhost:5555](http://localhost:5555).
 
-## Troubleshooting
-
-- **PostgreSQL Connection Issues**: If Prisma or the application can't connect to PostgreSQL, make sure Docker is running and the PostgreSQL container is up. You can check logs using:
-
-  ```bash
-  docker logs <postgres_container_id>
-  ```
-
-- **Kafka Issues**: If Kafka isn't working, make sure Zookeeper is running and Kafka can connect to it. Check Kafka logs using:
-
-  ```bash
-  docker logs <kafka_container_id>
-  ```
-
-- **Database Migration Issues**: If migrations are not working correctly, ensure that the Prisma schema is correctly defined in `prisma/schema.prisma` and run the migration command again.
-
-```bash
-npx prisma migrate dev
-```
-
----
-
-This README provides step-by-step instructions for setting up the project, installing dependencies, running the services, and troubleshooting common issues.
