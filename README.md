@@ -1,7 +1,3 @@
-Here's your updated README with the new endpoints and information about `Socket.io` events for real-time updates.
-
----
-
 # Polling Backend System
 
 This project is a Node.js application that uses Prisma, PostgreSQL, Kafka, and Zookeeper for managing data and event streaming. The application is containerized using Docker for easy setup and deployment.
