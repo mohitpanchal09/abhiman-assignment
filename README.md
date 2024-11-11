@@ -49,7 +49,7 @@ npm install
 Create a `.env` file in the root of the project directory, and add the following variables:
 
 ```bash
-DATABASE_URL="postgresql://testingsetup:testingsetup@localhost:5432/testingsetup"
+DATABASE_URL="postgresql://abhiman:abhiman@localhost:5432/abhiman"
 PORT=3000
 ```
 
@@ -107,9 +107,9 @@ http://localhost:8080
 ```
 
 - **Server**: `db`
-- **Username**: `testingsetup`
-- **Password**: `testingsetup`
-- **Database**: `testingsetup`
+- **Username**: `abhiman`
+- **Password**: `abhiman`
+- **Database**: `abhiman`
 
 ## Kafka Setup
 
