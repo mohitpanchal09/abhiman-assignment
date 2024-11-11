@@ -10,9 +10,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB="abhiman"
-      - POSTGRES_USER="abhiman"
-      - POSTGRES_PASSWORD="abhiman"
+      - POSTGRES_DB=abhiman
+      - POSTGRES_USER=abhiman
+      - POSTGRES_PASSWORD=abhiman
 
   # Adminer for database management
   adminer:
